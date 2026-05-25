@@ -2,11 +2,16 @@ package com.example.rewards.controller;
 
 import com.example.rewards.dto.RewardResponse;
 import com.example.rewards.service.RewardService;
+
+import jakarta.validation.constraints.Min;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/rewards")
+@Validated
 public class RewardController {
 
     private final RewardService rewardService;
@@ -16,7 +21,8 @@ public class RewardController {
     }
 
     @GetMapping("/{customerId}")
-    public ResponseEntity<RewardResponse> getRewards(@PathVariable Long customerId) {
+    public ResponseEntity<RewardResponse> getRewards(
+            @PathVariable @Min(1) Long customerId) {
 
         return ResponseEntity.ok(rewardService.getRewardsByCustomer(customerId));
     }
