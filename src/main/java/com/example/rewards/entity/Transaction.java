@@ -11,9 +11,16 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "customer_id")
     private Long customerId;
+    
+    @Column(name = "customer_name")
     private String customerName;
+    
+    @Column(name = "amount")
     private Double amount;
+    
+    @Column(name = "transaction_date")
     private LocalDate transactionDate;
 
     public Transaction() {}
