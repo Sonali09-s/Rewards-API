@@ -1,4 +1,4 @@
-package com.example.rewards.dto;
+package com.example.rewards.dto.response;
 
 import java.util.List;
 

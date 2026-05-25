@@ -1,7 +1,8 @@
 package com.example.rewards.service;
 
-import com.example.rewards.dto.MonthlyReward;
-import com.example.rewards.dto.RewardResponse;
+
+import com.example.rewards.dto.response.MonthlyReward;
+import com.example.rewards.dto.response.RewardResponse;
 import com.example.rewards.entity.Transaction;
 import com.example.rewards.exception.ResourceNotFoundException;
 import com.example.rewards.repository.TransactionRepository;

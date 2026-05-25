@@ -1,6 +1,5 @@
 package com.example.rewards.controller;
 
-import com.example.rewards.dto.RewardResponse;
 import com.example.rewards.service.RewardService;
 
 import jakarta.validation.constraints.Min;
@@ -21,7 +20,7 @@ public class RewardController {
     }
 
     @GetMapping("/{customerId}")
-    public ResponseEntity<RewardResponse> getRewards(
+    public ResponseEntity<com.example.rewards.dto.response.RewardResponse> getRewards(
             @PathVariable @Min(1) Long customerId) {
 
         return ResponseEntity.ok(rewardService.getRewardsByCustomer(customerId));
