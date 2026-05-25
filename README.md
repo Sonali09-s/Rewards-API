@@ -64,7 +64,7 @@ src/main/java/com/example/rewards
 │   ├── GlobalExceptionHandler.java
 │   └── ResourceNotFoundException.java
 └── RewardsApiApplication.java
----
+```
 
 **API Specification**
 **Get Reward Details by Customer ID**
@@ -78,8 +78,10 @@ src/main/java/com/example/rewards
 ```http
 GET /api/rewards/1 HTTP/1.1
 Host: localhost:8080
+```
 
 Example Response (200 OK)
+```
 {
   "customerId": 1,
   "customerName": "John Doe",
@@ -95,74 +97,69 @@ Example Response (200 OK)
   ],
   "totalRewards": 365
 }
-Database & Sample Data
-H2 Console Configuration
-The application leverages an embedded H2 database initialized with sample transaction patterns via src/main/resources/data.sql on startup.
+```
+## Database & Sample Data
 
-Console URL: http://localhost:8080/h2-console
+### H2 Console Configuration
+The application leverages an embedded H2 database initialized with sample transaction patterns via `src/main/resources/data.sql` on startup.
 
-JDBC URL: jdbc:h2:mem:rewardsdb
+* **Console URL:** http://localhost:8080/h2-console
+* **JDBC URL:** jdbc:h2:mem:rewardsdb
+* **Username:** sa
+* **Password:** (Leave blank)
 
-Username: sa
-
-Password: (Leave blank)
-
-Verification Query
-
+### Verification Query
+```sql
 SELECT * FROM TRANSACTION;
-
-Testing Strategy
+```
+**Testing Strategy**
 The test suite ensures application reliability across edge cases (e.g., negative amounts, missing IDs, null values).
 
-Unit Testing (JUnit 5 & Mockito)
+**Unit Testing (JUnit 5 & Mockito)**
 Focuses on isolating core algorithmic logic and validating calculations in RewardServiceTest.
-
-Bash
+```bash
 mvn test
-Integration Testing (@SpringBootTest & MockMvc)
-Verifies the full request-response lifecycle, routing, HTTP status codes, and serialization accuracy in RewardControllerTest.
+```
+**Integration Testing (@SpringBootTest & MockMvc)**
+**Verifies the full request-response lifecycle, routing, HTTP status codes, and serialization accuracy in RewardControllerTest.**
 
-Getting Started
-Prerequisites
-JDK 17 or higher
+**Getting Started**
+**Prerequisites**
 
-Maven 3.x Installed
+* **JDK 17 or higher**
+* **Maven 3.x Installed**
 
-Setup Instructions
-Clone the repository:
+**Setup Instructions**
+**1. Clone the repository:**
 
-Bash
-git clone <your-github-repository-url>
-cd rewards-api
-Build and package the application:
+```bash
+**git clone <your-github-repository-url>**
+**cd rewards-api**
+```
+**2. Build and package the application:**
 
-Bash
-mvn clean install
-Run the application:
+```bash
+**mvn clean install**
+```
+**3. Run the application:**
 
-Bash
-mvn spring-boot:run
-The server will start up locally on http://localhost:8080.
+```bash
+**mvn spring-boot:run**
+```
+**The server will start up locally on http://localhost:8080.**
 
-Roadmap / Future Improvements
+**Roadmap / Future Improvements**
 
-Add Swagger/OpenAPI 3 documentation support for easier API interactive exploration.
+* **Add Swagger/OpenAPI 3 documentation support for easier API interactive exploration.**
+* **Externalize database configuration to support persistent profiles like PostgreSQL/MySQL.**
+* **Add containerization layer via a Dockerfile.**
+* **Introduce Request Validation rules (@Valid, @NotNull, @Min).**
+* **Implement security contexts via Spring Security & JWT.**
 
-Externalize database configuration to support persistent profiles like PostgreSQL/MySQL.
+**Configuration Files Location**
 
-Add containerization layer via a Dockerfile.
-
-Introduce Request Validation rules (@Valid, @NotNull, @Min).
-
-Implement security contexts via Spring Security & JWT.
-
-Author
-Developed as part of the Spring Boot Practical Code Assignment.
-
-Configuration Files Location
-
-Plaintext
-src/main/resources
-├── application.yml
-└── data.sql
+```text
+**src/main/resources**
+**├── application.yml**
+**└── data.sql**
 
